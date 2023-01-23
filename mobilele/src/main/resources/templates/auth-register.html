@@ -72,7 +72,7 @@
         <div class="row">
             <div class="form-group col-md-6 mb-3">
                 <label for="firstName" class="text-white font-weight-bold">First Name</label>
-                <input id="firstName"  th:field="*{firstName}" type="text" min="2" max="20" class="form-control"
+                <input id="firstName" th:field="*{firstName}" type="text" min="2" max="20" class="form-control"
                        placeholder="First name"/>
                 <p class="errors alert alert-danger">
                     First name is required.
@@ -80,7 +80,7 @@
             </div>
             <div class="form-group col-md-6 mb-3">
                 <label for="lastName" class="text-white font-weight-bold">Last Name</label>
-                <input id="lastName" type="text" min="2" max="20" class="form-control"
+                <input id="lastName" th:field="*{lastName}" type="text" min="2" max="20" class="form-control"
                        placeholder="First name"/>
                 <p class="errors alert alert-danger">
                     Last name is required.
@@ -90,7 +90,7 @@
         <div class="row">
             <div class="form-group col-md-6 mb-3">
                 <label for="username" class="text-white font-weight-bold">Username</label>
-                <input id="username" type="text" min="2" max="20" class="form-control"
+                <input id="username" th:field="*{username}" type="text" min="2" max="20" class="form-control"
                        placeholder="First name"/>
                 <p class="errors alert alert-danger">
                     Username is required.
@@ -98,7 +98,7 @@
             </div>
             <div class="form-group col-md-6 mb-3">
                 <label for="password" class="text-white font-weight-bold">Password</label>
-                <input id="password" type="password" min="2" max="20" class="form-control"
+                <input id="password" th:field="*{password}" type="password" min="2" max="20" class="form-control"
                        placeholder="Password"/>
                 <p class="errors alert alert-danger">
                     Password is required.
@@ -107,7 +107,7 @@
         </div>
         <div class="form-group">
             <label class="text-center text-white font-weight-bold" for="roles">Roles</label>
-            <select id="roles" class="form-control" multiple>
+            <select id="roles" class="form-control" th:field="*{role}" multiple>
                 <tr th:each="role: ${roles}">
                     <option th:text="${role.role}" th:value="${role.role}"></option>
                 </tr>
