@@ -1,6 +1,6 @@
 package com.softuni.mobilele.domain.dtoS.banding;
 
-import jakarta.persistence.Column;
+import com.softuni.mobilele.domain.enums.Role;
 
 public class UserRegisterFormDto {
 
@@ -12,7 +12,7 @@ public class UserRegisterFormDto {
 
     private String lastName; //–  last name of the user.
 
-    private String role; //–  last name of the user.
+    private Role role; //–  last name of the user.
 
     public String getUsername() {
         return username;
@@ -50,11 +50,11 @@ public class UserRegisterFormDto {
         return this;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public UserRegisterFormDto setRole(String role) {
+    public UserRegisterFormDto setRole(Role role) {
         this.role = role;
         return this;
     }
