@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 public class OfferServiceImpl implements OfferService, DataBaseInitServiceService {
     @Override
     public void dbInit() {
-
     }
 
     @Override
