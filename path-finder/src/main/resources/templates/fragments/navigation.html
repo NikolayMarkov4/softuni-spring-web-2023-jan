@@ -1,21 +1,21 @@
 <header th:fragment="navigation">
     <nav class="main-nav">
-        <ul th:if="${username == ''}">
+        <ul th:if="${@loggedUser.id == null}">
             <li>
-                <a href="/">Home</a>
+                <a th:href="@{/}">Home</a>
             </li>
             <li>
-                <a href="/auth/login">Login</a>
+                <a th:href="@{/auth/login}">Login</a>
             </li>
             <li>
-                <a href="/auth/register">Register</a>
+                <a th:href="@{/auth/register}">Register</a>
             </li>
             <li>
                 <a href="/about">About</a>
             </li>
 
         </ul>
-        <ul th:unless="${username == ''}">
+        <ul th:unless="${@loggedUser.id == null}">
             <li>
                 <a href="/">Add new route</a>
             </li>
@@ -24,16 +24,12 @@
                 <a href="/">Profile</a>
             </li>
 
-            <li>
-                <a href="/">Logout</a>
-            </li>
-
-            <li>
-                <a href="/">Home</a>
-            </li>
-
-            <li>
+            <li th:if="${@loggedUser.isAdmin()}">
                 <a href="/">Admin</a>
+            </li>
+
+            <li>
+                <a th:href="@{/auth/logout}">Logout</a>
             </li>
         </ul>
     </nav>

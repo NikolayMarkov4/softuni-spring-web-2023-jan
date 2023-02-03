@@ -15,7 +15,7 @@ spring:
   sql:
     init:
       mode: never
-#      should be always on first start
+  #      should be always on first start
   jpa:
     # Choose either MySQL 8 or MySQL 5 below
     # For MySQL 8
@@ -30,8 +30,8 @@ spring:
       hibernate:
         format_sql: true
     defer-datasource-initialization: true
-#Cloudinary Properties cloud
-#cloudinary:
+  #Cloudinary Properties cloud
+  #cloudinary:
   #api-key: 
   #api-secret: 
   #cloud-name:

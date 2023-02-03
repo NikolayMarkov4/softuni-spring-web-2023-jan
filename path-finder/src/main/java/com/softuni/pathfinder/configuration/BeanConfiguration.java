@@ -1,6 +1,6 @@
-package com.softuni.mobilele.config;
+package com.softuni.pathfinder.configuration;
 
-import com.softuni.mobilele.domain.beans.LoggedUser;
+import com.softuni.pathfinder.helpers.LoggedUser;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

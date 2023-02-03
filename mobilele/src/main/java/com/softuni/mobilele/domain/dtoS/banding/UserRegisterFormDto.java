@@ -4,15 +4,11 @@ import com.softuni.mobilele.domain.enums.Role;
 
 public class UserRegisterFormDto {
 
-    private String username; // –  username of the user.
-
-    private String password; //– password of the user.
-
-    private String firstName; //–  first name of the user.
-
-    private String lastName; //–  last name of the user.
-
-    private Role role; //–  last name of the user.
+    private String username;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private Role role;
 
     public String getUsername() {
         return username;
