@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LinkedOut</title>
+    <link rel="stylesheet" href="/css/reset-css.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-toggler bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link text-white" href="/companies/add">Add Company</a>
+                <a class="nav-item nav-link text-white" href="/employees/add">Add Employee</a>
+                <a class="nav-item nav-link text-white" href="/companies/all">All Companies</a>
+                <a class="nav-item nav-link text-white" href="/employees/all">All Employees</a>
+            </div>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class="container">
+        <h2 class="text-center text-dark bg-light rounded-circle mt-5">All employees</h2>
+        <hr style="width: 50%"/>
+        <div class='row mb-4 d-flex justify-content-around'>
+            
+                <div class="col-md-4 d-flex flex-column bg-text mb-3 rounded">
+                    <h2>Full name: {firstName} {lastName}</h2>
+                    <h4>Job title: {jobTitle}</h4>
+                    <h4>Birth Date: {birthDate}</h4>
+                    <h4><a class="btn-block" href="/">Detail info</a></h4>
+                </div>
+				<div class="col-md-4 d-flex flex-column bg-text mb-3 rounded">
+                    <h2>Full name: {firstName} {lastName}</h2>
+                    <h4>Job title: {jobTitle}</h4>
+                    <h4>Birth Date: {birthDate}</h4>
+                    <h4><a class="btn-block" href="/">Detail info</a></h4>
+                </div>
+				<div class="col-md-4 d-flex flex-column bg-text mb-3 rounded">
+                    <h2>Full name: {firstName} {lastName}</h2>
+                    <h4>Job title: {jobTitle}</h4>
+                    <h4>Birth Date: {birthDate}</h4>
+                    <h4><a class="btn-block" href="/">Detail info</a></h4>
+                </div>
+          
+        </div>
+    </div>
+</main>
+
+<footer id="footer">
+    <div class="container-fluid bg-transparent rounded">
+        <div class="text-white p-2 text-center">&copy; Spring Team 2020. All rights reserved.</div>
+    </div>
+</footer>
+</body>
+</html>

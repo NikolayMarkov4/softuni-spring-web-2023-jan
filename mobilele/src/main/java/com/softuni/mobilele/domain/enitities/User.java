@@ -1,9 +1,6 @@
 package com.softuni.mobilele.domain.enitities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Date;
 import java.util.List;
@@ -27,7 +24,7 @@ public class User extends BaseEntity {
     @Column
     private Boolean isActive; //– true OR false.
 
-    @OneToMany
+    @ManyToMany(cascade = CascadeType.MERGE)
     private List<UserRole> role; //–  user's role (User or Admin).
 
     @Column

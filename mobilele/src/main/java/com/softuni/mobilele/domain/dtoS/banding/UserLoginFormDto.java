@@ -1,8 +1,11 @@
 package com.softuni.mobilele.domain.dtoS.banding;
 
+import com.softuni.mobilele.validations.userExists.ValidateLoginUser;
+
+@ValidateLoginUser
 public class UserLoginFormDto {
-    private String username; // –  username of the user.
-    private String password; //– password of the user.
+    private String username;
+    private String password;
 
     public UserLoginFormDto() {
     }

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LinkedOut</title>
+    <link rel="stylesheet" href="/css/reset-css.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-toggler bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link text-white" href="/companies/add">Add Company</a>
+                <a class="nav-item nav-link text-white" href="/employees/add">Add Employee</a>
+                <a class="nav-item nav-link text-white" href="/companies/all">All Companies</a>
+                <a class="nav-item nav-link text-white" href="/employees/all">All Employees</a>
+            </div>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <main class="jumbotron text-center rounded col-md-12 align-self-center">
+                <div class="justify-content-center">
+                    <h1>Company Details</h1>
+                </div>
+                <div class="row" th:object="${company}">
+                    <div class="col-md-6 bg-dark"><img src="/pic/company.png" height="350px"></div>
+
+                    <div class="col-md-6 bg-dark">
+                        <h2>Company</h2>
+
+                        <h4>Name: <strong th:text="*{name}"></strong></h4>
+
+                        <h4>Town: <strong th:text="*{town}"></strong></h4>
+
+                        <h4>Description: <strong th:text="*{description}"></strong></h4>
+
+                        <h4>Budget: <strong th:text="*{budget}"></strong></h4>
+
+                        <form th:method="DELETE"
+                              th:action="@{'/companies/' + ${id}}">
+                            <button class="btn btn-danger align-bottom" type="submit">Delete company</button>
+                        </form>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</main>
+<footer id="footer">
+    <div class="container-fluid bg-transparent rounded">
+        <div class="text-white p-2 text-center">&copy; Spring Team 2020. All rights reserved.</div>
+    </div>
+</footer>
+</body>
+</html>
