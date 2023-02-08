@@ -2,127 +2,153 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <title>MobiLeLeLe</title>
-    <link rel="stylesheet" href="/css/reset-css.css"/>
-    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
-    <script src="/js/jquery-3.5.1.slim.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <span th:replace="~{/fragments/head}"></span>
 </head>
 
 <body>
 
 <div>
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
-        <a class="navbar-brand" href="/"><img alt="car picture" src="/img/car.png" class="logo"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-<!--        <div th:if="${#session.containsKey('user')}">-->
-<!--            i'm not null-->
-<!--        </div>-->
-<!--        -->
-<!--        <div th:unless="${#session.containsKey('user')}">-->
-<!--            i'm null-->
-<!--        </div>-->
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto col-12 justify-content-between">
-                <li class="nav-item"
-                >
-                    <a class="nav-link" href="/brands/all">All Brands</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/offers/add">Add Offer</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/offers/all">All Offers</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Admin
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/">Action</a>
-                        <a class="dropdown-item" href="/">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/">Something else here</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <div class="form-inline my-2 my-lg-0 border px-3">
-                        <div class="logged-user"
-                             text="Welcome, Gosho"></div>
-                        <a class="nav-link" href="/users/logout">Logout</a>
-                    </div>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/users/register">Register</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/users/login">Login</a>
-                </li>
-
-            </ul>
-        </div>
-    </nav>
+    <nav th:replace="~{/fragments/navigation}"></nav>
 </div>
 
 <div class="container">
+
     <h2 class="text-center text-white">Register User</h2>
-    <form th:method="POST" th:action="@{/users/register}"
+
+    <form th:method="POST"
+          th:action="@{/users/register}"
+          th:object="${userRegisterForm}"
           class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
+
         <div class="row">
             <div class="form-group col-md-6 mb-3">
-                <label for="firstName" class="text-white font-weight-bold">First Name</label>
-                <input id="firstName" name="firstName" type="text" min="2" max="20" class="form-control"
-                       placeholder="First name"/>
-                <p class="errors alert alert-danger">
+
+                <label for="firstName"
+                       class="text-white font-weight-bold">First Name</label>
+
+                <input id="firstName"
+                       name="firstName"
+                       type="text"
+                       min="2"
+                       max="20"
+                       class="form-control"
+                       placeholder="First name"
+                th:value="*{firstName}"/>
+
+                <p th:if="${#fields.hasErrors('firstName')}"
+                   class="errors alert alert-danger">
                     First name is required.
                 </p>
+
             </div>
+
             <div class="form-group col-md-6 mb-3">
-                <label for="lastName" class="text-white font-weight-bold">Last Name</label>
-                <input id="lastName" name="lastName" type="text" min="2" max="20" class="form-control"
-                       placeholder="First name"/>
-                <p class="errors alert alert-danger">
+
+                <label for="lastName"
+                       class="text-white font-weight-bold">Last Name</label>
+
+                <input id="lastName"
+                       name="lastName"
+                       type="text"
+                       min="2"
+                       max="20"
+                       class="form-control"
+                       placeholder="First name"
+                       th:value="*{lastName}"
+                />
+
+                <p th:if="${#fields.hasErrors('lastName')}"
+                   class="errors alert alert-danger">
                     Last name is required.
                 </p>
             </div>
         </div>
+
         <div class="row">
             <div class="form-group col-md-6 mb-3">
-                <label for="username" class="text-white font-weight-bold">Username</label>
-                <input id="username" name="username" type="text" min="2" max="20" class="form-control"
-                       placeholder="First name"/>
-                <p class="errors alert alert-danger">
+
+                <label for="username"
+                       class="text-white font-weight-bold">
+                    Username
+                </label>
+
+                <input id="username"
+                       name="username"
+                       type="text"
+                       min="2"
+                       max="20"
+                       class="form-control"
+                       placeholder="First name"
+                       th:value="*{username}"/>
+                <p th:if="${#fields.hasErrors('username')}"
+                   class="errors alert alert-danger">
                     Username is required.
                 </p>
             </div>
+        </div>
+
+        <div class="row">
             <div class="form-group col-md-6 mb-3">
-                <label for="password" class="text-white font-weight-bold">Password</label>
-                <input id="password" name="password" type="password" min="2" max="20" class="form-control"
-                       placeholder="Password"/>
-                <p class="errors alert alert-danger">
+                <label for="password"
+                       class="text-white font-weight-bold">
+                    Password
+                </label>
+                <input id="password"
+                       name="password"
+                       type="password"
+                       min="2"
+                       max="20"
+                       class="form-control"
+                       placeholder="Password"
+                       th:value="*{password}"/>
+                <p th:if="${#fields.hasErrors('password')}"
+                   class="errors alert alert-danger">
                     Password is required.
                 </p>
             </div>
+
+            <div class="form-group col-md-6 mb-3">
+
+                <label for="confirmPassword"
+                       class="text-white font-weight-bold">
+                    Confirm Password
+                </label>
+
+                <input id="confirmPassword"
+                       name="confirmPassword"
+                       type="password"
+                       min="2"
+                       max="20"
+                       class="form-control"
+                       placeholder="Password"
+                       th:value="*{confirmPassword}"/>
+
+                <p th:if="${#fields.hasErrors('confirmPassword')}"
+                   class="errors alert alert-danger">
+                    Passwords does not match.
+                </p>
+
+            </div>
         </div>
+
         <div class="form-group">
             <label class="text-center text-white font-weight-bold" for="roles">Roles</label>
-            <select id="roles" class="form-control" name="role" multiple>
+            <select id="roles"
+                    class="form-control"
+                    name="role"
+                    multiple>
+
                 <tr th:each="role: ${roles}">
                     <option th:text="${role.role}" th:value="${role.role}"></option>
                 </tr>
+
             </select>
-            <p class="errors alert alert-danger">
+
+            <p th:if="${#fields.hasErrors('role')}"
+               class="errors alert alert-danger">
                 Selecting a role is required.
             </p>
+
         </div>
 
         <div class="row">
