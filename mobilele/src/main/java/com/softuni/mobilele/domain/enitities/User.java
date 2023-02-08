@@ -24,7 +24,7 @@ public class User extends BaseEntity {
     @Column
     private Boolean isActive; //– true OR false.
 
-    @OneToMany(cascade = CascadeType.MERGE)
+    @ManyToMany(cascade = CascadeType.MERGE)
     private List<UserRole> role; //–  user's role (User or Admin).
 
     @Column
