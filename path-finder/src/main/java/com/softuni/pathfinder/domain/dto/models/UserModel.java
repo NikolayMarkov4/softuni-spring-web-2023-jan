@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class UserModel {
 
-    private String id;
+    private Long id;
     private String username;
     private String password;
     private String email;
@@ -19,11 +19,11 @@ public class UserModel {
     public UserModel() {
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public UserModel setId(String id) {
+    public UserModel setId(Long id) {
         this.id = id;
         return this;
     }

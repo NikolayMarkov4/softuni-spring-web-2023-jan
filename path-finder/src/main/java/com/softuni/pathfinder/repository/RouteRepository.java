@@ -1,5 +1,6 @@
 package com.softuni.pathfinder.repository;
 
+import com.softuni.pathfinder.domain.entities.Category;
 import com.softuni.pathfinder.domain.entities.Route;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -13,4 +14,6 @@ public interface RouteRepository extends JpaRepository<Route, Long> {
 
     @Query("select r from Route as r order by size(r.comments) desc")
     Optional<List<Route>> findMostCommented();
+
+    Optional<List<Route>> findAllByCategoriesContains(Category category);
 }

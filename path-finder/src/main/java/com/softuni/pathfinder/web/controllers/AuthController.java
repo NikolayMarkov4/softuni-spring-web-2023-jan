@@ -1,4 +1,4 @@
-package com.softuni.pathfinder.web;
+package com.softuni.pathfinder.web.controllers;
 
 import com.softuni.pathfinder.domain.dto.binding.UserLoginForm;
 import com.softuni.pathfinder.domain.dto.binding.UserRegisterForm;
@@ -26,31 +26,13 @@ public class AuthController extends BaseController {
 
     @GetMapping("/register")
     public ModelAndView getRegister(ModelAndView modelAndView) {
-
-//        modelAndView.addObject("userRegisterInfo", userRegisterForm);
-
         return super.view("register", modelAndView);
-    }
-
-
-    @ModelAttribute("userRegisterForm")
-    public UserRegisterForm initForm() {
-        return new UserRegisterForm();
     }
 
     @PostMapping("/register")
     public ModelAndView doRegister(@Validated UserRegisterForm userRegisterForm,
                                    BindingResult bindingResult,
                                    ModelAndView modelAndView) {
-
-        // In our redirect implementation we are returning brand new Model and View and that was resetting the page.
-        // This is why we weren't seeing any error on our screen
-//        if (bindingResult.hasErrors()) {
-//            redirectAttributes.addFlashAttribute("userRegisterForm", userRegisterForm)
-//                    .addFlashAttribute("org.springframework.validation.BindingResult.userRegisterForm", bindingResult);
-//
-//            return super.redirect("register");
-//        }
         if (bindingResult.hasErrors()) {
             return super.view("register", modelAndView.addObject(userRegisterForm));
         }
@@ -66,7 +48,14 @@ public class AuthController extends BaseController {
     }
 
     @PostMapping("/login")
-    public ModelAndView postLogin(UserLoginForm userLoginForm) {
+    public ModelAndView postLogin(@Validated UserLoginForm userLoginForm,
+                                  BindingResult bindingResult,
+                                  ModelAndView modelAndView) {
+
+        if (bindingResult.hasErrors()) {
+            return super.view("login", modelAndView.addObject(userLoginForm));
+        }
+
         return this.userService.loginUser(userLoginForm).isValid()
                 ? super.redirect("/")
                 : super.redirect("login");
@@ -76,5 +65,16 @@ public class AuthController extends BaseController {
     public ModelAndView postLogout() {
         this.userService.logout();
         return super.redirect("/");
+    }
+
+    // Model Attributes
+    @ModelAttribute("userRegisterForm")
+    public UserRegisterForm initRegisterForm() {
+        return new UserRegisterForm();
+    }
+
+    @ModelAttribute("userLoginForm")
+    public UserLoginForm initLoginForm() {
+        return new UserLoginForm();
     }
 }

@@ -17,15 +17,16 @@
                         <label for="inputUsername" class="col-form-label ">Username</label>
                     </div>
                     <div class="col-auto">
-                        <input name="username"
-                               required
+                        <input name="username" required
+                               th:value="*{username}"
                                minlength="5" maxlength="20"
                                type="text"
                                id="inputUsername"
                                class="form-control"
-                               aria-describedby="usernameHelpInline" />
+                               aria-describedby="usernameHelpInline"/>
                         <small id="usernameError"
-                               class="invalid-feedback bg-danger rounded">Username length must be more than 3 characters</small>
+                               class="invalid-feedback bg-danger rounded">Username length must be more than 3
+                            characters</small>
 
                         <small id="usernameUniqueError"
                                th:if="${#fields.hasErrors('username')}"
@@ -34,88 +35,98 @@
                     </div>
                 </div>
 
-<!--                <div>-->
-<!--                    <div class="col-auto">-->
-<!--                        <label for="inputFullName" class="col-form-label ">Full Name</label>-->
-<!--                    </div>-->
-<!--                    <div class="col-auto">-->
-<!--                        <input name="fullName"-->
-<!--                               required minlength="5" maxlength="20"-->
-<!--                               type="text"-->
-<!--                               id="inputFullName"-->
-<!--                               class="form-control"-->
-<!--                               aria-describedby="fullNameHelpInline">-->
-<!--                        <small id="fullNameError"-->
-<!--                               class="invalid-feedback  form-text bg-danger rounded">Full name length must be more than-->
-<!--                            3 characters</small>-->
-<!--                    </div>-->
-<!--                </div>-->
+                <div>
+                    <div class="col-auto">
+                        <label for="inputFullName" class="col-form-label ">Full Name</label>
+                    </div>
+                    <div class="col-auto">
+                        <input name="fullName"
+                               th:value="*{fullName}"
+                               required minlength="5" maxlength="20"
+                               type="text"
+                               id="inputFullName"
+                               class="form-control"
+                               aria-describedby="fullNameHelpInline">
+                        <small id="fullNameError"
+                               th:if="${#fields.hasErrors('fullName')}"
+                               class="invalid-feedback  form-text bg-danger rounded">Full name length must be more than
+                            3 characters</small>
+                    </div>
+                </div>
 
-<!--                <div>-->
-<!--                    <div class="col-auto">-->
-<!--                        <label for="inputEmail" class="col-form-label ">Email</label>-->
-<!--                    </div>-->
-<!--                    <div class="col-auto">-->
-<!--                        <input name="email"-->
-<!--                               required-->
-<!--                               type="email"-->
-<!--                               id="inputEmail"-->
-<!--                               class="form-control"-->
-<!--                               aria-describedby="emailHelpInline">-->
-<!--                        <small id="emailError"-->
-<!--                               class="invalid-feedback  form-text bg-danger rounded">Must be valid email</small>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <div class="col-auto">-->
-<!--                        <label for="inputAge" class="col-form-label ">Age</label>-->
-<!--                    </div>-->
-<!--                    <div class="col-auto">-->
-<!--                        <input name="age" required-->
-<!--                               type="number"-->
-<!--                               id="inputAge"-->
-<!--                               class="form-control"-->
-<!--                               min="0" max="90"-->
-<!--                               aria-describedby="ageHelpInline">-->
-<!--                        <small id="ageError"-->
-<!--                               class="invalid-feedback  form-text bg-danger rounded">Must be valid age</small>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <div class="col-auto">-->
-<!--                        <label for="inputPassword" class="col-form-label ">Password</label>-->
-<!--                    </div>-->
-<!--                    <div class="col-auto">-->
-<!--                        <input name="password"-->
-<!--                               required minlength="5" maxlength="20"-->
-<!--                               type="password"-->
-<!--                               id="inputPassword"-->
-<!--                               class="form-control"-->
-<!--                               aria-describedby="passwordHelpInline">-->
-<!--                        <small id="passwordError"-->
-<!--                               class="invalid-feedback  form-text bg-danger rounded">-->
-<!--                            Password length must be between 5 and 20 characters and passwords should match.-->
-<!--                        </small>-->
-<!--                    </div>-->
-<!--                </div>-->
+                <div>
+                    <div class="col-auto">
+                        <label for="inputEmail" class="col-form-label ">Email</label>
+                    </div>
+                    <div class="col-auto">
+                        <input name="email"
+                               th:value="*{email}"
+                               required
+                               type="email"
+                               id="inputEmail"
+                               class="form-control"
+                               aria-describedby="emailHelpInline">
+                        <small id="emailError"
+                               th:if="${#fields.hasErrors('email')}"
+                               class="invalid-feedback  form-text bg-danger rounded">Must be valid email</small>
+                    </div>
+                </div>
+                <div>
+                    <div class="col-auto">
+                        <label for="inputAge" class="col-form-label ">Age</label>
+                    </div>
+                    <div class="col-auto">
+                        <input name="age" required
+                               th:value="*{age}"
+                               type="number"
+                               id="inputAge"
+                               class="form-control"
+                               min="0" max="90"
+                               aria-describedby="ageHelpInline">
+                        <small id="ageError"
+                               th:if="${#fields.hasErrors('age')}"
+                               class="invalid-feedback  form-text bg-danger rounded">Must be valid age</small>
+                    </div>
+                </div>
+                <div>
+                    <div class="col-auto">
+                        <label for="inputPassword" class="col-form-label ">Password</label>
+                    </div>
+                    <div class="col-auto">
+                        <input name="password"
+                               th:value="*{password}"
+                               required minlength="5" maxlength="20"
+                               type="password"
+                               id="inputPassword"
+                               class="form-control"
+                               aria-describedby="passwordHelpInline">
+                        <small id="passwordError"
+                               th:if="${#fields.hasErrors('password')}"
+                               class="invalid-feedback  form-text bg-danger rounded">
+                            Password length must be between 5 and 20 characters and passwords should match.
+                        </small>
+                    </div>
+                </div>
 
-<!--                <div>-->
-<!--                    <div class="col-auto">-->
-<!--                        <label for="inputConfirmPassword" class="col-form-label ">Confirm Password</label>-->
-<!--                    </div>-->
-<!--                    <div class="col-auto">-->
-<!--                        <input name="confirmPassword"-->
-<!--                               required minlength="5" maxlength="20"-->
-<!--                               type="password"-->
-<!--                               id="inputConfirmPassword"-->
-<!--                               class="form-control"-->
-<!--                               aria-describedby="confirmPasswordHelpInline">-->
-<!--                        <small id="confirmPasswordError"-->
-<!--                               class="invalid-feedback  form-text bg-danger rounded">-->
-<!--                            Password length must be between 5 and 20 characters and passwords should match.-->
-<!--                        </small>-->
-<!--                    </div>-->
-<!--                </div>-->
+                <div>
+                    <div class="col-auto">
+                        <label for="inputConfirmPassword" class="col-form-label ">Confirm Password</label>
+                    </div>
+                    <div class="col-auto">
+                        <input name="confirmPassword"
+                               th:value="*{confirmPassword}"
+                               required minlength="5" maxlength="20"
+                               type="password"
+                               id="inputConfirmPassword"
+                               class="form-control"
+                               aria-describedby="confirmPasswordHelpInline">
+                        <small id="confirmPasswordError"
+                               th:if="${#fields.hasErrors('confirmPassword')}"
+                               class="invalid-feedback  form-text bg-danger rounded">
+                            Password length must be between 5 and 20 characters and passwords should match.
+                        </small>
+                    </div>
+                </div>
 
                 <div class="d-flex justify-content-center mt-4">
                     <button class="btn btn-primary btn-block w-50" type="submit">Register</button>

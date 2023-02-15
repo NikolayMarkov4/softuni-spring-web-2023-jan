@@ -9,16 +9,23 @@
     <div class="d-flex justify-content-center">
 
         <div class="row g-3 align-items-center">
-
             <form
                     th:action="@{/auth/login}"
-                    th:method="POST">
+                    th:method="POST"
+                    th:object="${userLoginForm}">
+
+                <p th:if="${#fields.hasAnyErrors()}"
+                   class="alert-info h3 m-auto p-1">
+                    Username Or Password is invalid.
+                </p>
+
                 <div>
                     <div class="col-auto">
                         <label for="inputUsername" class="col-form-label ">Username</label>
                     </div>
                     <div class="col-auto">
                         <input type="text"
+                               th:value="*{username}"
                                name="username"
                                required minlength="4" maxlength="20"
                                id="inputUsername"

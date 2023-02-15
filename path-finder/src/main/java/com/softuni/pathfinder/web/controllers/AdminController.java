@@ -1,4 +1,4 @@
-package com.softuni.pathfinder.web;
+package com.softuni.pathfinder.web.controllers;
 
 import com.softuni.pathfinder.domain.dto.binding.RoleChangeForm;
 import com.softuni.pathfinder.domain.enums.RoleName;

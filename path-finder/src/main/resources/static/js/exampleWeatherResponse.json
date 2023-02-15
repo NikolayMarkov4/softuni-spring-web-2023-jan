@@ -1,0 +1,43 @@
+{
+  "coord": {
+    "lon": 23.3242,
+    "lat": 42.6975
+  },
+  "weather": [
+    {
+      "id": 800,
+      "main": "Clear",
+      "description": "clear sky",
+      "icon": "01n"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 273,
+    "feels_like": 273,
+    "temp_min": 271.98,
+    "temp_max": 274.84,
+    "pressure": 1032,
+    "humidity": 82
+  },
+  "visibility": 8000,
+  "wind": {
+    "speed": 0.51,
+    "deg": 0
+  },
+  "clouds": {
+    "all": 5
+  },
+  "dt": 1676490500,
+  "sys": {
+    "type": 2,
+    "id": 2033225,
+    "country": "BG",
+    "sunrise": 1676438680,
+    "sunset": 1676476638
+  },
+  "timezone": 7200,
+  "id": 727011,
+  "name": "Sofia",
+  "cod": 200
+}
