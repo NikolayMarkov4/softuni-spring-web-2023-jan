@@ -20,7 +20,7 @@ public class PasswordMatcher implements ConstraintValidator<PasswordMatch, UserR
         }
 
         context.buildConstraintViolationWithTemplate(context.getDefaultConstraintMessageTemplate())
-                .addPropertyNode(userRegisterModel.getConfirmPassword())
+                .addPropertyNode("confirmPassword")
                 .addConstraintViolation()
                 .disableDefaultConstraintViolation();
 
