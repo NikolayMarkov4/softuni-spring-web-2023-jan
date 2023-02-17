@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService, DataBaseInitServiceService {
@@ -54,15 +55,22 @@ public class UserServiceImpl implements UserService, DataBaseInitServiceService 
     }
 
     @Override
-    public void loginUser(UserLoginFormDto userLogin) {
-        UserModel loginCandidate =
-                this.modelMapper.map(this.userRepository.findByUsername(userLogin.getUsername()).get(),
-                        UserModel.class);
+    public UserModel loginUser(UserLoginFormDto userLogin) {
+        Optional<User> loginCandidate = this.userRepository.findByUsername(userLogin.getUsername());
 
-        this.loggedUser
-                .setId(loginCandidate.getId())
-                .setUsername(loginCandidate.getUsername())
-                .setRoleModels(loginCandidate.getRole());
+        UserModel userConfirmation = loginCandidate.isPresent()
+                && loginCandidate.get().getPassword().equals(userLogin.getPassword())
+                ? this.modelMapper.map(loginCandidate.get(), UserModel.class)
+                : new UserModel();
+
+        if (userConfirmation.isValid()) {
+            this.loggedUser
+                    .setId(userConfirmation.getId())
+                    .setUsername(userConfirmation.getUsername())
+                    .setRoleModels(userConfirmation.getRole());
+        }
+
+        return userConfirmation;
     }
 
     @Override

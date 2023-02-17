@@ -1,5 +1,7 @@
 package com.softuni.mobilele.domain.dtoS.veiw;
 
+import com.softuni.mobilele.domain.enums.Role;
+
 public class UserRoleViewDto {
     private String role;
 

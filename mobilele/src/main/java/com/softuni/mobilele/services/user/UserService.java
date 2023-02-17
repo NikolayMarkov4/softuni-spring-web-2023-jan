@@ -8,7 +8,7 @@ public interface UserService {
 
     UserModel registerUser(UserRegisterFormDto userRegister);
 
-    void loginUser(UserLoginFormDto userLogin);
+    UserModel loginUser(UserLoginFormDto userLogin);
 
     void logout();
 }
