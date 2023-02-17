@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LinkedOut</title>
+    <link rel="stylesheet" href="/css/reset-css.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-toggler bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link text-white" href="/companies/add">Add Company</a>
+                <a class="nav-item nav-link text-white" href="/employees/add">Add Employee</a>
+                <a class="nav-item nav-link text-white" href="/companies/all">All Companies</a>
+                <a class="nav-item nav-link text-white" href="/employees/all">All Employees</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <main class="jumbotron text-center rounded col-md-8 align-self-center">
+        <div class="justify-content-center">
+            <h1>Add Company</h1>
+        </div>
+
+        <form th:method="PATCH"
+              th:action="@{/companies/add}"
+              th:object="${companyAddModel}"
+              class="m-md-auto w-50 text-center">
+
+            <div class="form-group">
+                <label for="name">Name</label>
+
+                <input th:value="*{name}"
+                       type="text"
+                       class="form-control text-center"
+                       id="name"
+                       aria-describedby="nameHelp"
+                       name="name"/>
+
+                <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="alert alert-danger errors">Error message</small>
+            </div>
+
+            <div class="form-group">
+                <label for="town">Town</label>
+
+                <input th:value="*{town}"
+                       type="text"
+                       class="form-control text-center"
+                       id="town"
+                       aria-describedby="town"
+                       name="town"/>
+
+                <small th:if="${#fields.hasErrors('town')}" th:errors="*{town}" class="alert alert-danger errors">Error message</small>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+
+                <input th:value="*{description}"
+                       type="text"
+                       class="form-control text-center"
+                       id="description"
+                       aria-describedby="description"
+                       name="description"/>
+
+                <small th:if="${#fields.hasErrors('description')}"
+                       th:errors="*{description}" class="alert alert-danger errors">Error message</small>
+            </div>
+
+            <div class="form-group">
+
+                <label for="budget">Budget</label>
+
+                <input th:value="*{budget}"
+                       type="number"
+                       min="0"
+                       class="form-control text-center"
+                       id="budget"
+                       aria-describedby="town"
+                       name="budget"/>
+
+                <small th:if="${#fields.hasErrors('budget')}"
+                       th:errors="*{budget}"
+                       class="alert alert-danger errors">Budget</small>
+            </div>
+
+            <button type="submit" class="btn btn-secondary">Add Company</button>
+        </form>
+    </main>
+</div>
+
+<footer id="footer">
+    <div class="container-fluid bg-transparent rounded">
+        <div class="text-white p-2 text-center">&copy; Spring Team 2020. All rights reserved.</div>
+    </div>
+</footer>
+</body>
+</html>

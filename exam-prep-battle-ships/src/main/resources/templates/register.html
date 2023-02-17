@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Battleships Application</title>
+    <link rel="stylesheet" href="/css/reset-css.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body class="body-main">
+<header>
+    <nav th:replace="~{/fragments/navbar}"></nav>
+</header>
+<main role="main">
+    <div class="jumbotron">
+        <div class="container text-light ">
+            <h1 class="display-3">
+                <div class=" pl-3 font-weight-bold text-center">
+                    Register
+                </div>
+            </h1>
+        </div>
+        <div class="row">
+            <div class="col-md-6 ">
+                <img class="rounded" width="100%" src="/images/register.jpg" alt="Battle ship image">
+            </div>
+
+            <div class="col-md-6">
+                <div class="container bg-blur rounded p-5 mt-5 w-75">
+
+                    <form th:action="@{/auth/register}"
+                          th:method="POST"
+                          th:object="${userRegisterModel}"
+                          class=" text-center text-light">
+
+                        <div class="form-group row">
+                            <label for="username" class="col-sm-2 col-form-label">Username</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="username"
+                                       name="username"
+                                       th:value="*{username}"
+                                       aria-describedby="usernameHelpInline" placeholder="Username">
+
+                                <small th:if="${#fields.hasErrors('username')}"
+                                       id="usernameHelpInline"
+                                       class="bg-danger text-light rounded">
+                                    Username length must be between 5 and 20 characters.
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="fullName" class="col-sm-2 col-form-label">Full name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       id="fullName"
+                                       name="fullName"
+                                       aria-describedby="fullNameHelpInline" placeholder="Full name"
+                                       th:value="*{fullName}">
+
+                                <small th:if="${#fields.hasErrors('fullName')}"
+                                       id="fullNameHelpInline"
+                                       class="bg-danger text-light rounded">
+                                    Enter valid full name.
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="email" class="col-sm-2 col-form-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="email" name="email"
+                                       th:value="*{email}"
+                                       aria-describedby="emailHelpInline" placeholder="email@example.com">
+                                <small th:if="${#fields.hasErrors('email')}"
+                                       id="emailHelpInline"
+                                       class="bg-danger text-light rounded">
+                                    Enter valid email address.
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password" class="col-sm-2 col-form-label">Password</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control"
+                                       id="password"
+                                       name="password"
+                                       th:value="*{password}"
+                                       aria-describedby="passwordHelpInline" placeholder="Password">
+                                <small th:if="${#fields.hasErrors('password')}"
+                                       id="passwordHelpInline"
+                                       class="bg-danger text-light rounded">
+                                    Password length must be more than 3 characters long.
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="confirmPassword" class="col-sm-2 col-form-label">Confirm Password</label>
+                            <div class="col-sm-10">
+                                <input type="password"
+                                       class="form-control" id="confirmPassword" name="confirmPassword"
+                                       th:value="*{confirmPassword}"
+                                       aria-describedby="confirmPasswordHelpInline" placeholder="Confirm Password">
+
+                                <small th:if="${#fields.hasErrors('confirmPassword')}"
+                                       id="confirmPasswordHelpInline" class="bg-danger text-light rounded">
+                                    Password length must be more than 3 characters long.
+                                </small>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-warning w-50">Register</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="container text-white">
+    <p>&copy;SoftUni Spring Team 2021. All rights reserved.</p>
+</footer>
+</body>
+</html>

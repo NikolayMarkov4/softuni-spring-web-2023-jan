@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LinkedOut</title>
+    <link rel="stylesheet" href="/css/reset-css.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-toggler bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link text-white" href="/companies/add">Add Company</a>
+                <a class="nav-item nav-link text-white" href="/employees/add">Add Employee</a>
+                <a class="nav-item nav-link text-white" href="/companies/all">All Companies</a>
+                <a class="nav-item nav-link text-white" href="/employees/all">All Employees</a>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <main class="jumbotron text-center rounded col-md-12 align-self-center">
+            <div class="justify-content-center">
+                <h1>Add Employee</h1>
+            </div>
+            <form class="m-md-auto w-50 text-center">
+
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control text-center" id="firstName" aria-describedby="firstName" name="firstName" />
+                    <small>Error message</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control text-center" id="lastName" aria-describedby="lastName" name="lastName"/>
+                    <small>Error message</small>
+                </div>
+                <fieldset class="form-group">
+                    <legend>Choose Education Level</legend>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="educationLevel"/>
+                            <span>Master</span>
+                        </label>
+                    </div>
+                    <div class="form-check disabled">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="educationLevel"/>
+                            <span>Bachelor</span>
+                        </label>
+                    </div>
+                    <div class="form-check disabled">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input " name="educationLevel" />
+                            <span>Secondary</span>
+                        </label>
+                    </div>
+                    <small>Error message</small>
+					</fieldset>
+
+                <div class="form-group">
+                    <label for="company"><h5>All available companies</h5></label>
+                    <select multiple="false" class="form-control text-center" id="company" name="company">
+                        <option> First Company name</option>
+                        <option> Second Company name</option>
+                        <option> Third Company name</option>
+                    </select>
+                    <small>Error message</small>
+				</div>
+
+                <div class="form-group">
+                    <label for="jobTitle">Job Title</label>
+                    <input type="text" class="form-control text-center" id="jobTitle" aria-describedby="jobTitle" name="jobTitle" />
+                    <small>Error message</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="birthDate">Birth Date</label>
+                    <input type="date" class="form-control text-center" id="birthDate" aria-describedby="birthDate" name="birthDate" />
+                    <small>Error message</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="salary">Salary</label>
+                    <input type="number" min="0" class="form-control text-center" id="salary" 
+					aria-describedby="salary" name="salary"/>
+                    <small>Error message</small>
+                </div>
+
+                <button type="submit" class="btn btn-secondary">Add Employee</button>
+            </form>
+        </main>
+    </div>
+</div>
+</body>
+<footer id="footer">
+    <div class="container-fluid bg-transparent rounded">
+        <div class="text-white p-2 text-center">&copy; Spring Team 2020. All rights reserved.</div>
+    </div>
+</footer>
+</html>

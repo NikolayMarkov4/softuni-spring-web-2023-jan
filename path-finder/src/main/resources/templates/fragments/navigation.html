@@ -17,15 +17,18 @@
         </ul>
         <ul th:unless="${@loggedUser.id == null}">
             <li>
-                <a href="/">Add new route</a>
+                <a th:href="@{/routes/add}">Add new route</a>
             </li>
 
             <li>
-                <a href="/">Profile</a>
+                <a th:href="@{/users/profile}">Profile</a>
             </li>
 
             <li th:if="${@loggedUser.isAdmin()}">
                 <a href="/">Admin</a>
+            </li>
+
+            <li th:unless="${@loggedUser.isAdmin()}">
             </li>
 
             <li>

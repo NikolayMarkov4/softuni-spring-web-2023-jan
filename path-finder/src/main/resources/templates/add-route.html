@@ -1,74 +1,37 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Pathfinder</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/mobile.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
-          integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
-          integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-          crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
-            integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-            crossorigin=""></script>
+<head th:replace="~{/fragments/head}">
 </head>
 <body>
 <!--<div class="wrapper">-->
 <!-- Navigation -->
-<header>
-    <nav class="main-nav">
-        <ul>
-                <li>
-                    <a href="/">Home</a>
-                </li>
-                <li>
-                    <a href="/">Login</a>
-                </li>
-                <li>
-                    <a href="/">Register</a>
-                </li>
-                <li>
-                    <a href="/">About</a>
-                </li>
-				<li>
-                    <a href="/">Add new route</a>
-                </li>
-                <li>
-                    <a href="/">Profile</a>
-                </li>
-                <li>
-                    <a href="/">Admin</a>
-                </li>
-                <li>
-                    <a href="/">Logout</a>
-                </li>
-        </ul>
-    </nav>
+<header th:replace="~{/fragments/navigation}">
 </header>
 
 <!-- Top Container -->
 <div class="row justify-content-center ">
-    <form id="add-route-form" class="w-50 rounded text-white mt-5"
-          action="/" 
-          method="/" enctype="multipart/form-data">
+    <form id="add-route-form"
+          class="w-50 rounded text-white mt-5"
+          th:action="@{/routes/add}"
+          th:method="POST"
+          th:object="${routeAddForm}"
+          enctype="multipart/form-data">
 
         <h3 class="border-left border-light pl-2">Add a new route</h3>
         <div>
             <div class="form-group">
                 <label for="inputName" class="col-form-label ">Name</label>
             </div>
+
             <div class="form-group">
-                <input name="name" 
-                       required minlength="5" maxlength="20"
+                <input name="name"
+                       th:value="*{name}"
                        type="text"
                        id="inputName"
                        class="form-control"
                        aria-describedby="inputNameError">
-                <small id="inputNameError"
+                <small th:if="${#fields.hasErrors('name')}"
+                       id="inputNameError"
                        class="invalid-feedback bg-danger rounded">Name length must be more than 3 characters</small>
 
             </div>
@@ -79,15 +42,18 @@
                 <label for="inputDescription" class="col-form-label ">Description</label>
             </div>
             <div class="form-group">
-                    <textarea name="description" 
+                    <textarea name="description"
+                              th:value="*{description}"
                               required minlength="5"
                               id="inputDescription"
                               class="form-control"
-                              aria-describedby="inputDescriptionError"></textarea>
-                <small id="inputDescriptionError"
-                       class="invalid-feedback  form-text bg-danger rounded">Description length must be more than 5
-                    characters</small>
+                              aria-describedby="inputDescriptionError">
+                    </textarea>
             </div>
+            <small th:if="${#fields.hasErrors('description')}"
+                   id="inputDescriptionError"
+                   class="invalid-feedback  form-text bg-danger rounded">
+                Description length must be more than 5 characters</small>
         </div>
 
         <div>
@@ -95,39 +61,65 @@
                 <label for="inputGpx" class="col-form-label ">GPX Coordinates</label>
             </div>
             <div class="form-group">
-                <input type="file" name="gpxCoordinates"
-					   required
+                <input type="file"
+                       name="gpxCoordinates"
+                       th:value="*{gpxCoordinates}"
+                       required
                        id="inputGpx"
                        class="form-control-file"
                        aria-describedby="inputGpxError">
-                <small id="inputGpxError"
+                <small th:if="${#fields.hasErrors('gpxCoordinates')}"
+                       id="inputGpxError"
                        class="invalid-feedback  form-text bg-danger rounded">Must be valid GPX Coordinates</small>
             </div>
         </div>
+
         <div>
             <div class="form-group">
                 <label for="level">Level</label>
-                <select id="level" class="custom-select">
+                <select name="level" id="level" class="custom-select" th:field="*{level}">
                     <option value="" selected>Select level</option>
-                    <option value="1" text="ADVANCED">Select level</option>
+                    <option th:each="level : ${T(com.softuni.pathfinder.domain.enums.Level).values()}"
+                            th:value="${level}"
+                            th:text="${level}">
+                    </option>
                 </select>
+                <small th:if="${#fields.hasErrors('level')}"
+                       id="levelError"
+                       class="invalid-feedback  form-text bg-danger rounded">Level Must not be null</small>
             </div>
         </div>
+
         <div>
 
             <div class="form-group">
                 <label for="videoUrl">Video Url (only last eleven characters from Youtube)</label>
-                <input id="videoUrl" type="text"
-                       class="form-control" placeholder="Video url">
+
+                <input id="videoUrl"
+                       th:value="*{video}"
+                       name="video"
+                       type="text"
+                       class="form-control"
+                       placeholder="Video url">
+
+                <small th:if="${#fields.hasErrors('video')}"
+                       id="videoError"
+                       class="invalid-feedback  form-text bg-danger rounded">Url Must Not Be Null</small>
             </div>
         </div>
 
         <div>
             <div class="form-group p-3">
                 <label class="p-2" for="categories">Categories:</label>
-                <input class="m-3" type="checkbox" name="categories" id="categories"
-                       value="1" text="Category">
-				<br>
+                <input class="m-3"
+                       type="checkbox"
+                       name="categories"
+                       id="categories"
+                       th:each="category : ${T(com.softuni.pathfinder.domain.enums.CategoryName).values()}"
+                       th:object="${category}"
+                       th:value="${category}"
+                       th:text="${category}">
+                <br>
             </div>
         </div>
 

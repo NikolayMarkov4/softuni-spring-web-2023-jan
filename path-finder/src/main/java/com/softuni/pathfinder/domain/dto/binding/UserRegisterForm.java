@@ -1,30 +1,32 @@
 package com.softuni.pathfinder.domain.dto.binding;
 
 
+import com.softuni.pathfinder.validation.passwardMatcher.PasswordMatch;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+@PasswordMatch
 public class UserRegisterForm {
 
     @NotNull
     @Size(min = 10, message = "length bro")
     private String username;
 
-//    @Size(min = 5)
-//    private String fullName;
-//
-//    @Email
-//    private String email;
-//
-//    @NotNull
-//    private Integer age;
-//
-//    @Size(min = 5)
-//    private String password;
-//
-//    @Size(min = 5)
-//    private String confirmPassword;
+    @Size(min = 5)
+    private String fullName;
+
+    @Email
+    private String email;
+
+    @NotNull
+    private Integer age;
+
+    @Size(min = 5)
+    private String password;
+
+    @Size(min = 5)
+    private String confirmPassword;
 
 
     public String getUsername() {
@@ -35,43 +37,43 @@ public class UserRegisterForm {
         this.username = username;
     }
 
-//    public String getFullName() {
-//        return fullName;
-//    }
-//
-//    public void setFullName(String fullName) {
-//        this.fullName = fullName;
-//    }
-//
-//    public String getEmail() {
-//        return email;
-//    }
-//
-//    public void setEmail(String email) {
-//        this.email = email;
-//    }
-//
-//    public Integer getAge() {
-//        return age;
-//    }
-//
-//    public void setAge(Integer age) {
-//        this.age = age;
-//    }
-//
-//    public String getPassword() {
-//        return password;
-//    }
-//
-//    public void setPassword(String password) {
-//        this.password = password;
-//    }
-//
-//    public String getConfirmPassword() {
-//        return confirmPassword;
-//    }
-//
-//    public void setConfirmPassword(String confirmPassword) {
-//        this.confirmPassword = confirmPassword;
-//    }
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
 }

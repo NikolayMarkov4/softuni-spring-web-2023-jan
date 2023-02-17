@@ -1,0 +1,39 @@
+body {
+    background-image: url('/pic/1.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
+}
+
+.bg-text {
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    z-index: 2;
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+}
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+#content-wrap {
+    padding-bottom: 2.5rem; /* Footer height */
+}
+
+#footer {
+    margin-top:auto;
+    margin-bottom: auto;
+}
+
+.jumbotron {
+    background-color: rgba(10, 20, 66, 0.93);
+    color: white;
+}
+

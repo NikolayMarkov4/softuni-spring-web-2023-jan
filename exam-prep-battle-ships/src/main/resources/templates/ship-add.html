@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Battleships Application</title>
+    <link rel="stylesheet" href="/css/reset-css.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body class="body-main">
+<header>
+    <nav th:replace="~{/fragments/navbar}"></nav>
+</header>
+<main role="main">
+    <div class="jumbotron">
+        <div class="container text-light ">
+            <h1 class="display-3 ">
+                <strong class="bg-blur rounded border-white pl-3 font-weight-bold">Add New Ship</strong></h1>
+        </div>
+        <div class="container bg-blur rounded p-5 mt-5 w-75">
+
+            <form th:action="@{/ships/add}"
+                  th:method="POST"
+                  th:object="${shipAddModel}"
+                  class=" text-center text-light">
+                <div class="form-group row">
+                    <label for="name" class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="name" name="name"
+                               aria-describedby="nameHelpInline" placeholder="Name"
+                               th:value="*{name}">
+                        <small th:if="${#fields.hasErrors('name')}" id="nameHelpInline" class="bg-danger text-light rounded">
+                            Name must be between 2 and 10 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="power" class="col-sm-2 col-form-label">Power</label>
+                    <div class="col-sm-10">
+                        <input type="number" step="1" class="form-control" id="power" name="power"
+                               aria-describedby="powerHelpInline"
+                               th:value="*{power}">
+                        <small th:if="${#fields.hasErrors('power')}" id="powerHelpInline" class="bg-danger text-light rounded">
+                            The power must be positive.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="health" class="col-sm-2 col-form-label">Health</label>
+                    <div class="col-sm-10">
+                        <input type="number" step="1" class="form-control" id="health" name="health"
+                               aria-describedby="healthHelpInline"
+                               th:value="*{health}">
+                        <small th:if="${#fields.hasErrors('health')}" id="healthHelpInline" class="bg-danger text-light rounded">
+                            The health must be positive.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="created" class="col-sm-2 col-form-label">Created date</label>
+                    <div class="col-sm-10">
+                        <input type="date" class="form-control" id="created" name="created"
+                               aria-describedby="createdHelpInline"
+                               th:value="*{created}">
+                        <small th:if="${#fields.hasErrors('created')}" id="createdTimeHelpInline" class="bg-danger text-light rounded">
+                            Created date cannot be in the future.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="category" class="col-sm-2 col-form-label">Category</label>
+                    <div class="col-sm-10">
+                        <select id="category" name="category" class="custom-select"
+                                aria-describedby="categoryHelpInline">
+                            <option value="" selected>Category</option>
+                            <option th:each="type : ${T(softuni.examprepbattleships.domain.enums.CategoryType).values()}"
+                            th:value="${type}" th:text="${type}">
+                            </option>
+                        </select>
+                        <small th:if="${#fields.hasErrors('category')}" id="categoryHelpInline" class="bg-danger text-light rounded">
+                            You must select the category.
+                        </small>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-danger w-50">Add the new Ship</button>
+            </form>
+        </div>
+    </div>
+</main>
+<footer class="container text-white">
+    <p>&copy;SoftUni Spring Team 2021. All rights reserved.</p>
+</footer>
+</body>
+</html>

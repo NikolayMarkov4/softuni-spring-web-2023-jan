@@ -31,34 +31,38 @@
 
     <!-- Boxes Section -->
     <section class="boxes">
-        <a href="/" class="main-btn">
+        <a th:href="@{/routes/byType/pedestrian}" class="main-btn">
             <div class="box">
                 <img src="/images/pedestrian.png" height="150px" alt="">
                 <h3>Pedestrian</h3>
                 <p>Is this your Leg day?</p>
             </div>
         </a>
-        <a href="/" class="main-btn">
+
+        <a th:href="@{/routes/byType/bicycle}" class="main-btn">
             <div class="box">
                 <img src="/images/bicycle.png" height="150px" alt="">
                 <h3>Bicycle</h3>
                 <p>When you want to be one with nature!</p>
             </div>
         </a>
-        <a href="/" class="main-btn">
+
+        <a th:href="@{/routes/byType/motorcycle}" class="main-btn">
             <div class="box">
                 <img src="/images/motorcycle.png" height="150px" alt="">
                 <h3>Motorcycle</h3>
                 <p>When you want the wind to blow on your face!</p>
             </div>
         </a>
-        <a href="/" class="main-btn">
+
+        <a th:href="@{/routes/byType/car}" class="main-btn">
             <div class="box">
                 <img src="/images/car.png" height="150px" alt="">
                 <h3>Car</h3>
                 <p>Going on a trip with friends?</p>
             </div>
         </a>
+
     </section>
 
     <!-- Info Section -->
@@ -69,7 +73,8 @@
             <span th:text="${mostCommented.name}"></span>
             <p>Read more about the most commented route and do not miss the
                 chance to visit it and give your opinion to help other users.</p>
-            <a href="/" class="btn">Learn More</a>
+            <a th:href="@{/routes/{id}(id=*{mostCommented.id})}" class="btn">Learn More</a>
+
         </div>
     </section>
 
@@ -81,7 +86,7 @@
              height="200px" alt="">
     </section>
 
-    <!-- <script th:src="@{/js/weather.js}"></script> -->
+    <script th:src="@{/js/weather.js}"></script>
 </div>
 <!-- Wrapper Ends -->'
 
