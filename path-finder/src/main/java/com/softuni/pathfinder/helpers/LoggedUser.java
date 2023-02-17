@@ -6,7 +6,7 @@ import com.softuni.pathfinder.domain.enums.RoleName;
 import java.util.Set;
 
 public class LoggedUser {
-    private Long id;
+    private String id;
     private String username;
     private Set<RoleModel> roleModels;
 
@@ -14,11 +14,11 @@ public class LoggedUser {
     public LoggedUser() {
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public LoggedUser setId(Long id) {
+    public LoggedUser setId(String id) {
         this.id = id;
         return this;
     }
